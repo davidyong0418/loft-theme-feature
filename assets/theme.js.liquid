@@ -4203,7 +4203,14 @@ $(function() {
     sections.register('search-template', theme.Sections.SearchTemplate);
 });
 $(document).ready(function() {
-  if( typeof(productOptions ) != "undefined" ){
+    $('#btn-placeholder').click(function(){
+        alert();
+        $('.product-smart-wrapper button').hide();
+        console.log($('.product-smart-wrapper button'));
+        $('.js-prod-price').text('');
+        console.log($('.js-prod-price'));
+    });
+      if( typeof(productOptions ) != "undefined" ){
     for(i=0;i<productOptions.length;i++) {
       $('.single-option-selector:eq('+ i +')')
       .filter(function() {

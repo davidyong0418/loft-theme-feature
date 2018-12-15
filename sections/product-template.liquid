@@ -25,7 +25,16 @@ Settings
 {% comment %}
 Get first variant, or deep linked one
 {% endcomment %}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% if product.variants.size > 1 %}
+  {% assign current_variant = product.selected %}
+{% else %}
+  {% assign current_variant = product.first_available_variant %}
+{% endif %}
+<script>
+  console.log('#####', "{{product.selected}}")
+</script>
+
 {% assign top_mobile_buttons = section.settings.mobile_button_location %}
 
 {% comment %}
@@ -35,7 +44,10 @@ Check if the product is sold out and set a variable to be used below.
 {% if current_variant.available %}
 {% assign sold_out = false %}
 {% endif %}
-
+{% if product.variants.size > 1 %}
+{% assign sold_out = false %}
+{% assign select_placeholder = true %}
+{% endif %}
 {% comment %}
 Check if the product is on sale and set a variable to be used below.
 {% endcomment %}
@@ -301,6 +313,15 @@ color:white;
   </form><!-- form end -->
 </div>
 
+<script>
+var productOptions = [];
+  {% for option in product.options %}
+  var optionObj = {};
+  optionObj[ {{ forloop.index0 }} ] = "{{ product.options[forloop.index0] }}";
+  productOptions.push(optionObj);
+  console.log('productOptions++', productOptions);
+  {% endfor %}
+</script>
 
 
 {% schema %}

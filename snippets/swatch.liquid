@@ -89,6 +89,16 @@
 <div class="swatch clearfix"  name="id" id="productSelect" class="{{ singleOpSelectClasses }}" data-prod-base-price="{{ varGenProd.price }}" data-option-index="{{ option_index }}">
   <div class="header">{{ swatch }}</div>
   {% assign values = '' %}
+  <div class="swatch-element big" id="btn-placeholder">
+        
+        <input id="swatch-011-big-product-template" type="radio" name="id">
+        
+        <label for="swatch-">
+         Test bigss
+           <img class="crossed-out" src="11111">
+        </label>
+        
+      </div>
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}
     {% unless values contains value %}
@@ -130,6 +140,7 @@ For multiple options to tie into JS
 <div class="swatch clearfix multiop-select" id="productSelect-op{{ swatchIndex }}" data-prod-base-price="{{ varGenProd.price }}" data-option-index="{{ option_index }}" data-opnum="{{ swatchIndex }}">
   <div class="header">{{ swatch }}</div>
   {% assign values = '' %}
+  
   {% for variant in product.variants %}
     {% assign value = variant.options[option_index] %}
     {% unless values contains value %}
@@ -154,11 +165,7 @@ For multiple options to tie into JS
       </div>
     {% endunless %}
     {% if variant.available %}
-      <script>
-        $(function(){
-        jQuery('.swatch[data-option-index="{{ option_index }}"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
-        })
-      </script>
+      
     {% endif %}
   {% endfor %}
 </div>

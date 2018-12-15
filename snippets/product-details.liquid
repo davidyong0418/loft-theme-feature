@@ -3,7 +3,6 @@
   <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
   	{% include 'variant-selects' %}
-  
     <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
     <span id="ProductPrice" class="visually-hidden ProductPrice" itemprop="price" content="{{ current_variant.price | divided_by: 100 }}">
       {{ current_variant.price | money }}
@@ -14,7 +13,7 @@
     <div class="quick-smart-wrapper">
           <div  {% if settings.enable_payment_button%} class="smart-wrapper"{%endif%} {%if sold_out %}style="display:none"{%endif%}>
 
-      <button role="button" tabindex="0" class="add-to-cart-btn {% if top_mobile_buttons and section.settings.enable_payment_button == false %}medium-down--hide {% else %} mobile-inline-btn{% endif %} js-prod-show-available {% if section.settings.use_ajax_cart %}js-prod-ajax-btn{% else %}js-prod-form-btn{% endif %}" id="AddToCartDesk" {%if sold_out %}style="display:none"{%endif%}>
+      <button role="button" tabindex="0" class="add-to-cart-btn {% if top_mobile_buttons and section.settings.enable_payment_button == false %}medium-down--hide {% else %} mobile-inline-btn{% endif %} js-prod-show-available {% if section.settings.use_ajax_cart %}js-prod-ajax-btn{% else %}js-prod-form-btn{% endif %}" id="AddToCartDesk">
         <span class="btn cart-error">{{ 'products.product.cart_add_error' | t }}</span>
         <span class="btn cart-normal">{{ 'products.product.add_to_cart' | t }}</span>
         <span class="btn cart-success">{{ 'products.product.cart_add_success' | t }} {{ 'icon-tick.svg' | asset_url | img_tag }}</span>
@@ -26,7 +25,7 @@
   </div>
     <div class=" {% if section.settings.enable_payment_button%}smart-wrapper{%endif%} product-smart-wrapper" {%if sold_out %}style="display:none"{%endif%}>
 
-      <button role="button" tabindex="0" class="add-to-cart-btn {% if top_mobile_buttons and section.settings.enable_payment_button == false %}medium-down--hide {% else %} mobile-inline-btn{% endif %} js-prod-show-available {% if section.settings.use_ajax_cart %}js-prod-ajax-btn{% else %}js-prod-form-btn{% endif %}" id="AddToCartDesk" {%if sold_out %}style="display:none"{%endif%}>
+      <button role="button" tabindex="0" class="add-to-cart-btn {% if top_mobile_buttons and section.settings.enable_payment_button == false %}medium-down--hide {% else %} mobile-inline-btn{% endif %} js-prod-show-available {% if section.settings.use_ajax_cart %}js-prod-ajax-btn{% else %}js-prod-form-btn{% endif %}" id="AddToCartDesk" {%if sold_out or select_placeholder %}style="display:none"{%endif%}>
         <span class="btn cart-error">{{ 'products.product.cart_add_error' | t }}</span>
         <span class="btn cart-normal">{{ 'products.product.add_to_cart' | t }}</span>
         <span class="btn cart-success">{{ 'products.product.cart_add_success' | t }} {{ 'icon-tick.svg' | asset_url | img_tag }}</span>
@@ -38,7 +37,7 @@
  
     </div>
      <button class="btn {% if top_mobile_buttons %}small--hide medium--hide{% endif %} disabled js-prod-show-soldout" disabled id="AddToCartSold" {%unless sold_out %}style="display:none"{%endunless%}>
-      <span id="AddToCartTextDesk" class="js-prod-soldout-btn-text">{{ 'products.product.sold_out' | t }}</span>
+      <span id="AddToCartTextDesk" class="js-prod-soldout-btn-text">what is sold out</span>
     </button>
    
 
